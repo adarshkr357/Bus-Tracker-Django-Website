@@ -6,6 +6,11 @@ The Bus Tracker is an innovative project aimed at revolutionizing public transpo
 
 1. Django
 
+# Pre-defined
+
+1. Django admin username: bus-tracker-admin
+2. Django admin password: AdarshKr-bus-tracker-357
+
 # Key Features
 
 - **Real-Time Location Tracking:** The system employs GPS technology to continuously track the exact location of buses in real-time. Users can easily identify the current location of their desired bus on a map.
