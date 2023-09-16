@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5 px-0">
+    <form method="POST" action="/register">
+        {% csrf_token %}
+        <div class="card text-center">
+            <div class="card-body">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item active"><a class="page-link" href="#">Passenger</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Driver / Conductor</a></li>
+                    </ul>
+                </nav>
+
+                {% comment %} <div id="passenger_container">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-signature"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter your full name..." aria-label="Name" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter your username..." aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter your gmail, without @gmail.com..." aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" class="form-control" placeholder="Enter your password..." aria-label="Password" aria-describedby="basic-addon1">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </div> {% endcomment %}
+
+                <div id="driver_container">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-signature"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter your full name..." aria-label="Name" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter your gmail, without @gmail.com" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                        <i class="input-group-text fa-solid fa-eye" id="togglePassword"></i>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-hashtag"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter Bus Number..." aria-label="Bus Number" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-bus-simple"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter Bus Name..." aria-label="Bus Name" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-gas-pump"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter Fuel Type..." aria-label="Fuel Type" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-route"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter Bus Route in sequence, Like this: Vipin Garden, Tilak Nagar, Subhash Nagar" aria-label="Bus Route" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter Bus Fare in sequence, Like this: 10, 20, 30" aria-label="Bus Fare" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-circle-info"></i></span>
+                        <input type="text" class="form-control" placeholder="Enter Emission Compliance (Optional)..." aria-label="Emission Compliance" aria-describedby="basic-addon1">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+        </div>
+    </form>
+</div>
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', () => {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        if (type == 'text') {
+            togglePassword.setAttribute('class', 'input-group-text fa-solid fa-eye-slash');
+        }
+        else {
+            togglePassword.setAttribute('class', 'input-group-text fa-solid fa-eye');
+        }
+    });
+</script>
+{% endblock body %}

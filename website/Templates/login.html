@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5 px-0">
+    <form method="POST" action="/login">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="userEmail" class="form-label">Email address / Username</label>
+            <input type="text" class="form-control" id="userEmail" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email or username with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="userPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="userPassword">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="remember_me">
+            <label class="form-check-label" for="remember_me">Remember Me ?</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock body %}
