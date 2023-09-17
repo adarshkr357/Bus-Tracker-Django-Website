@@ -9,7 +9,7 @@ The Bus Tracker is an innovative project aimed at revolutionizing public transpo
 # Commands to RUN
 
 1. ```python website/manage.py createsuperuser```
-    **Then:**
+    > **Then:**
     - Enter username
     - Enter email (optional)
     - Enter password
