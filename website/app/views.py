@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import login
 from django.contrib.auth.hashers import make_password, check_password
 from app.models import *
 import random
@@ -16,20 +17,39 @@ def user_login(request):
     if request.method == "POST":
         userEmail = request.POST['userData']
         userPassword = request.POST['password']
-        
-        # Check if the user exists in the Driver model
-        driver = Driver.objects.filter(driver_email=userEmail).first()
-        if driver and check_password(userPassword, driver.driver_password):
-            request.session['user_type'] = "driver"
-            messages.success(request, f'Welcome {userEmail} !!')
-            return redirect('/index')
-        
-        # Check if the user exists in the Passenger model
-        passenger = Passenger.objects.filter(email=userEmail).first()
-        if passenger and check_password(userPassword, passenger.password):
-            request.session['user_type'] = "passenger"
-            messages.success(request, f'Welcome {userEmail} !!')
-            return redirect('/index')
+
+        if '@' in userEmail:
+            # Check if the user exists in the Driver model
+            driver = Driver.objects.filter(driver_email=userEmail).first()
+            if driver and check_password(userPassword, driver.driver_password):
+                login(request, driver)
+                request.session['user_type'] = "driver"
+                messages.success(request, f'Welcome {userEmail} !!')
+                return redirect('/index')
+            
+            # Check if the user exists in the Passenger model
+            passenger = Passenger.objects.filter(email=userEmail).first()
+            if passenger and check_password(userPassword, passenger.password):
+                login(request, passenger)
+                request.session['user_type'] = "passenger"
+                messages.success(request, f'Welcome {userEmail} !!')
+                return redirect('/index')
+        else:
+            # Check if the user exists in the Driver model
+            driver = Driver.objects.filter(driver_username=userEmail).first()
+            if driver and check_password(userPassword, driver.driver_password):
+                login(request, driver)
+                request.session['user_type'] = "driver"
+                messages.success(request, f'Welcome {userEmail} !!')
+                return redirect('/index')
+            
+            # Check if the user exists in the Passenger model
+            passenger = Passenger.objects.filter(username=userEmail).first()
+            if passenger and check_password(userPassword, passenger.password):
+                login(request, passenger)
+                request.session['user_type'] = "passenger"
+                messages.success(request, f'Welcome {userEmail} !!')
+                return redirect('/index')
 
         messages.warning(request, "Invalid Credentials !!")
 
