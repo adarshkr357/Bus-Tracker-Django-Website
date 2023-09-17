@@ -1,5 +1,5 @@
 > [!WARNING]
-> This project is closed suspended due to a lack of resources.
+> This project is suspended due to a lack of resources.
 > If you have the resources you can take it as a base and continue it further.
 
 # Bus-Tracker-Website
