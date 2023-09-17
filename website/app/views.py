@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import login
 from django.contrib.auth.hashers import make_password, check_password
 from app.models import *
 import random
@@ -8,7 +7,7 @@ import random
 # Create your views here.
 
 def index(request):
-    if not request.user.is_authenticated:
+    if not request.session['user_type']:
         return redirect('/login')
     return render(request, 'index.html')
 
@@ -22,7 +21,6 @@ def user_login(request):
             # Check if the user exists in the Driver model
             driver = Driver.objects.filter(driver_email=userEmail).first()
             if driver and check_password(userPassword, driver.driver_password):
-                login(request, driver)
                 request.session['user_type'] = "driver"
                 messages.success(request, f'Welcome {userEmail} !!')
                 return redirect('/index')
@@ -30,7 +28,6 @@ def user_login(request):
             # Check if the user exists in the Passenger model
             passenger = Passenger.objects.filter(email=userEmail).first()
             if passenger and check_password(userPassword, passenger.password):
-                login(request, passenger)
                 request.session['user_type'] = "passenger"
                 messages.success(request, f'Welcome {userEmail} !!')
                 return redirect('/index')
@@ -38,7 +35,6 @@ def user_login(request):
             # Check if the user exists in the Driver model
             driver = Driver.objects.filter(driver_username=userEmail).first()
             if driver and check_password(userPassword, driver.driver_password):
-                login(request, driver)
                 request.session['user_type'] = "driver"
                 messages.success(request, f'Welcome {userEmail} !!')
                 return redirect('/index')
@@ -46,7 +42,6 @@ def user_login(request):
             # Check if the user exists in the Passenger model
             passenger = Passenger.objects.filter(username=userEmail).first()
             if passenger and check_password(userPassword, passenger.password):
-                login(request, passenger)
                 request.session['user_type'] = "passenger"
                 messages.success(request, f'Welcome {userEmail} !!')
                 return redirect('/index')
