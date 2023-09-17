@@ -56,7 +56,7 @@ def register(request):
                     fare = fares,
                     fuel_type = fuel,
                     emission_compliance = emc
-                ).save
+                ).save()
             else:
                 Driver(
                     bus_num = busNum,
@@ -69,7 +69,7 @@ def register(request):
                     bus_route = routes,
                     fare = fares,
                     fuel_type = fuel
-                ).save
+                ).save()
             request.session['user_type'] = "driver"
         else:
             Passenger(
