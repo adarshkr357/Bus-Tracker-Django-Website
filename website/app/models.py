@@ -17,6 +17,9 @@ class Driver(models.Model):
     current_latitude = models.CharField(max_length=50, blank=True, null=True)
     current_longitude = models.CharField(max_length=50, blank=True, null=True)
 
+    def __str__(self):
+        return self.driver_name
+
 
 class Passenger(models.Model):
     user_id = models.IntegerField(primary_key=True)
@@ -28,3 +31,6 @@ class Passenger(models.Model):
     current_fare = models.IntegerField(blank=True, null=True)
     current_latitude = models.CharField(max_length=50, blank=True, null=True)
     current_longitude = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
