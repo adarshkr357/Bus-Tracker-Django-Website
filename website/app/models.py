@@ -18,7 +18,7 @@ class Driver(models.Model):
     current_longitude = models.CharField(max_length=50, blank=True, null=True)
 
 
-class User(models.Model):
+class Passenger(models.Model):
     user_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     username = models.CharField(max_length=50)

@@ -11,6 +11,30 @@
 </head>
 
 <body>
+    <style>
+        .input-group {
+            position: relative;
+        }
+    
+        .tooltip {
+            position: absolute;
+            top: 100%; /* Position the tooltip below the input field */
+            left: 0;
+            background: #30302B;
+            color: white;
+            padding: 0.5rem;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            z-index: 1; /* Ensure tooltips are above other elements */
+        }
+    
+        .input-group:hover .tooltip,
+        .input-group:focus-within .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <button id="themeChanger" type="button" class="btn btn-outline-secondary" onclick="changeTheme()"><i
