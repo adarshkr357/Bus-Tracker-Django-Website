@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import make_password
 from app.models import *
 import random
 
@@ -21,6 +22,7 @@ def login(request):
         else:
             user = authenticate(request, username = userEmail, password = userPassword)
         if user is not None:
+            login(request, user)
             messages.success(request, f'Welcome {userEmail} !!')
             return redirect('/index')
         else:
@@ -34,7 +36,7 @@ def register(request):
         full_name = request.POST['full_name']
         username = request.POST['username']
         email = request.POST['email'] + "@gmail.com"
-        password = request.POST['password']
+        password = make_password(request.POST['password'])
         uid = random.randint(11111111, 99999999)
         if request.POST['bus_number']:
             busNum = request.POST['bus_number']
