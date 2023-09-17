@@ -4,6 +4,21 @@
 Home
 {% endblock title %}
 
-{% block body %}
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+{% endblock head %}
 
+{% block body %}
+<div id="mapid" style="height: 600px;"></div>
+
+<script>
+    var map = L.map('mapid').setView([28.38, 77.12], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    var marker = L.marker([28.38, 77.12]).addTo(map);
+</script>
 {% endblock body %}

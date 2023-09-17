@@ -1,3 +1,7 @@
+> [!WARNING]
+> This project is closed suspended due to a lack of resources.
+> If you have the resources you can take it as a base and continue it further.
+
 # Bus-Tracker-Website
 
 The Bus Tracker is an innovative project aimed at revolutionizing public transportation. It leverages cutting-edge technologies, including GPS and advanced data integration, to provide users with real-time information about the availability of buses and their estimated arrival times at various bus stops.
