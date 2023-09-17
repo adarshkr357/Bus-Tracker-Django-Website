@@ -16,7 +16,7 @@ def login(request):
     if request.method == "POST":
         userEmail = request.POST['userData']
         userPassword = request.POST['password']
-        if (userEmail.includes('@')):
+        if '@' in userEmail:
             user = authenticate(request, email = userEmail, password = userPassword)
         else:
             user = authenticate(request, username = userEmail, password = userPassword)
@@ -24,7 +24,7 @@ def login(request):
             messages.success(request, f'Welcome {userEmail} !!')
             return redirect('/index')
         else:
-            messages.error(request, "Invalid Credentials !!")
+            messages.warning(request, "Invalid Credentials !!")
 
     return render(request, 'login.html')
 

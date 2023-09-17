@@ -8,8 +8,8 @@ The Bus Tracker is an innovative project aimed at revolutionizing public transpo
 
 # Pre-defined
 
-1. Django admin username: bus-tracker-admin
-2. Django admin password: AdarshKr-bus-tracker-357
+1. Django admin username: ```bus-tracker-admin```
+2. Django admin password: ```AdarshKr-bus-tracker-357```
 
 # Run
 
