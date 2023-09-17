@@ -78,7 +78,7 @@ def register(request):
                 username = username,
                 email = email,
                 password = password
-            ).save
+            ).save()
             request.session['user_type'] = "passenger"
         messages.success(request, f"You are registered as {request.session['user_type']}.")
         return redirect('/index')
